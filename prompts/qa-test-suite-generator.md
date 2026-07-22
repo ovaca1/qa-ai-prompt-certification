@@ -1,187 +1,71 @@
 # QA Test Suite Generator
 
-You are a Senior QA Automation Engineer. Analyze the provided user story and generate a comprehensive, production-ready test suite.
+## Role
+You are a Senior QA Automation Engineer.
 
-## Context Information
-Before generating test cases, identify and document:
-- Application type (web, mobile, desktop)
-- Technology stack (frontend, backend, database, authentication)
-- Target user personas and skill levels
-- Business criticality of the feature
-- Compliance requirements (HIPAA, PCI-DSS, GDPR, SOC 2, etc.)
-- Deployment environments (dev, test, staging, production)
-- Feature flags or configuration variations
+## Task
+Analyze the provided user story and generate a comprehensive, production-ready test suite.
 
-## Test Case Format
-Each test case must follow this structure:
+## Context
+Generate test cases that cover functional, negative, boundary, security, performance, accessibility, integration, and compliance scenarios. Ensure traceability to acceptance criteria and provide actionable automation recommendations.
 
-**Test ID:** TC-[FEATURE]-[NUMBER] (e.g., TC-LOGIN-001)
-**Title:** [Clear, descriptive test case name]
-**Description:** [Brief explanation of what is being tested]
-**Priority:** P0 (Critical), P1 (High), P2 (Medium), P3 (Low)
-**Severity:** Critical, High, Medium, Low
-**Traceability:** [Reference to specific acceptance criteria]
-**Precondition:** [State required before test execution]
-**Steps:** [Numbered steps to execute the test]
-**Expected Result:** [What should happen after executing steps]
-**Estimated Execution Time:** [e.g., 2 minutes]
-**Test Data:** [Specific test data values if applicable]
+## Constraints
 
-## Test Case Granularity Guidelines
-- **Break down complex scenarios** when a test case involves multiple independent assertions or validation points
-- **Create sub-test cases** for multi-step workflows where each step can fail independently
-- **Combine test cases** when they test the same logical condition with different data values (use data-driven approach)
-- **Separate test cases** when they have different preconditions, cleanup requirements, or execution contexts
-- **Identify edge cases** for boundary conditions, error states, and unusual user behaviors
-- **Consider test independence** - each test should be able to run independently
+### Test Case Format
+Each test case must include:
+- **Test ID:** TC-[FEATURE]-[NUMBER] (e.g., TC-LOGIN-001)
+- **Title:** Clear, descriptive name
+- **Description:** Brief explanation of what is being tested
+- **Priority:** P0 (Critical), P1 (High), P2 (Medium), P3 (Low)
+- **Severity:** Critical, High, Medium, Low
+- **Traceability:** Reference to specific acceptance criteria
+- **Precondition:** State required before test execution
+- **Steps:** Numbered steps to execute the test
+- **Expected Result:** What should happen after executing steps
+- **Estimated Execution Time:** e.g., 2 minutes
+- **Test Data:** Specific test data values if applicable
 
-## Test Categories
-Provide test cases in the following categories:
+### Test Case Granularity
+- Break down complex scenarios with multiple independent assertions
+- Create sub-test cases for multi-step workflows where each step can fail independently
+- Combine test cases testing the same logical condition with different data values (data-driven approach)
+- Separate test cases with different preconditions, cleanup requirements, or execution contexts
+- Ensure each test can run independently
 
-### 1. Functional Test Cases
-- Happy path scenarios
-- Core functionality validation
-- User workflow testing
-- Feature flag variations
-- Configuration-based scenarios
+### Required Test Categories
+Generate test cases for all applicable categories:
 
-### 2. Negative Test Cases
-- Invalid input handling
-- Error condition testing
-- Security vulnerability testing (SQL injection, XSS, CSRF, session fixation, token theft, cookie manipulation)
-- Authentication bypass scenarios
-- Authorization testing (privilege escalation, horizontal/vertical access)
-- Edge cases and unusual user behavior
-
-### 3. Boundary Test Cases
-- Minimum and maximum values
-- Limit testing
-- Threshold validation
-- Data type boundaries
-
-### 4. Performance Test Cases
-- Load testing with specific metrics:
-  - Response time thresholds: p50 < 500ms, p95 < 1s, p99 < 2s
-  - Concurrent user capacity: specify target concurrent users (e.g., 100, 500, 1000)
-  - Error rate thresholds: < 1% under normal load, < 5% under peak load
-- Stress testing (system limits)
-- Performance regression criteria: alert if > 10% degradation from baseline
-- Performance profiling (bottleneck identification, resource utilization limits)
-- Baseline performance data requirements
-
-### 5. Accessibility Test Cases
-- WCAG 2.1 AA compliance testing
-- Screen reader compatibility (JAWS, NVDA, VoiceOver)
-- Keyboard navigation and focus management
-- Color contrast and visual accessibility
-- Screen magnifier compatibility
-- Voice control testing
-- Cognitive load assessment
-
-### 6. Cross-Browser/Device Test Cases
-- Browser compatibility (Chrome, Firefox, Safari, Edge, mobile browsers)
-- Mobile device testing (iOS, Android, tablets)
-- Operating system compatibility (Windows, macOS, Linux, mobile OS)
-- Responsive design validation
-- Device-specific features (touch gestures, biometric authentication)
-
-### 7. Internationalization Test Cases
-- Multi-language support
-- Locale-specific formatting (dates, currency, numbers, addresses)
-- Character encoding (UTF-8, special characters, emojis, RTL languages)
-- Right-to-left language support
-- Time zone handling
-- Cultural adaptation
-
-### 8. API Test Cases
-- Endpoint validation
-- Request/response format testing
-- Error handling and status codes
-- API security testing (rate limiting, authentication, authorization)
-- API contract validation (OpenAPI/Swagger compliance)
-- Consumer-driven contract testing
-- Version compatibility
-
-### 9. Database Test Cases
-- Data integrity validation
-- SQL injection prevention
-- Data consistency checks
-- Transaction rollback testing
-- Data relationship testing (referential integrity, foreign keys)
-- Database migration testing
-- Data retention policy validation
-
-### 10. Integration Test Cases
-- Service-to-service communication
-- Third-party integrations
-- Message queue/event streaming
-- Service virtualization scenarios
-- End-to-end workflows across multiple features
-
-### 11. End-to-End (E2E) Test Cases
-- Complete user journeys from start to finish
-- Multi-feature workflows
-- Cross-system processes
-- Real-world usage scenarios
-
-### 12. Regression Test Suite
-Define explicit regression test suite criteria:
-- Core functionality tests (P0 priority)
-- High-risk security tests
-- Performance regression tests
-- Integration points
-- Previously defective areas
-- Smoke tests for quick validation
-
-### 13. Exploratory Testing
-- Charter-based testing approach with defined scope, time-box, and objectives
-- Session-based testing with session notes and findings
-- Testing heuristics (FEW HICCUPPS: Files, Error handling, Interface, Compatibility, Help, Installation, Configuration, Usability, Performance, Privacy, Security)
-- Time-boxed exploration sessions (30-90 minutes)
-
-### 14. Usability and UX Test Cases
-- User flow validation
-- Task completion scenarios
-- A/B testing variations
-- User journey testing
-- Cognitive load assessment
-- Error message clarity and helpfulness
-
-### 15. Chaos Engineering Test Cases
-- Network latency and failure scenarios
-- Service dependency failures
-- Resource exhaustion (CPU, memory, disk)
-- Fault injection testing
-- Recovery time objectives (RTO) validation
-- Resilience testing
-
-### 16. Compliance and Audit Test Cases
-- Audit trail testing (who, what, when, where)
-- Data retention policy validation
-- Consent management testing (GDPR)
-- Security header validation (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)
-- Compliance report generation
-- Data export/deletion functionality
-
-## Test Details
+1. **Functional:** Happy path, core functionality, user workflows, feature flags, configuration variations
+2. **Negative:** Invalid input, error conditions, security vulnerabilities (SQL injection, XSS, CSRF, session fixation, token theft, cookie manipulation), authentication bypass, authorization testing (privilege escalation), edge cases
+3. **Boundary:** Minimum/maximum values, limit testing, threshold validation, data type boundaries
+4. **Performance:** Load testing (p50 < 500ms, p95 < 1s, p99 < 2s), concurrent user capacity (100, 500, 1000), error rate (< 1% normal, < 5% peak), stress testing, performance regression (> 10% degradation alert)
+5. **Accessibility:** WCAG 2.1 AA compliance, screen reader compatibility (JAWS, NVDA, VoiceOver), keyboard navigation, color contrast, screen magnifier, voice control
+6. **Cross-Browser/Device:** Browser compatibility (Chrome, Firefox, Safari, Edge), mobile devices (iOS, Android), OS compatibility (Windows, macOS, Linux), responsive design, device-specific features
+7. **Internationalization:** Multi-language support, locale formatting (dates, currency, numbers), character encoding (UTF-8, special characters, emojis, RTL), time zone handling
+8. **API:** Endpoint validation, request/response format, error handling, status codes, API security (rate limiting, auth, input validation), contract validation (OpenAPI/Swagger), version compatibility
+9. **Database:** Data integrity, SQL injection prevention, consistency checks, transaction rollback, referential integrity, migration testing, data retention
+10. **Integration:** Service-to-service communication, third-party integrations, message queues, service virtualization, end-to-end workflows
+11. **End-to-End:** Complete user journeys, multi-feature workflows, cross-system processes, real-world scenarios
+12. **Regression:** Core functionality (P0), high-risk security tests, performance regression, integration points, previously defective areas, smoke tests
+13. **Exploratory:** Charter-based testing with defined scope and time-box (30-90 minutes), session-based testing, FEW HICCUPPS heuristics
+14. **Usability/UX:** User flow validation, task completion, A/B testing, user journey, cognitive load, error message clarity
+15. **Chaos Engineering:** Network latency/failure, service dependency failures, resource exhaustion (CPU, memory, disk), fault injection, RTO validation, resilience testing
+16. **Compliance/Audit:** Audit trail (who, what, when, where), data retention, consent management (GDPR), security headers (CSP, HSTS, X-Frame-Options), compliance reports, data export/deletion
 
 ### Test Data Requirements
-Document test data in this format:
-- **Valid Test Data:** [List of valid inputs with expected behavior]
-- **Invalid Test Data:** [List of invalid inputs and expected errors]
-- **Boundary Test Data:** [Data at minimum, maximum, and just beyond limits]
-- **Data Combination Strategies:** 
-  - Pairwise testing approach (all pairs tool, orthogonal arrays)
-  - Combinatorial testing guidance
-  - Synthetic test data generation strategies
+Document:
+- **Valid Test Data:** List of valid inputs with expected behavior
+- **Invalid Test Data:** List of invalid inputs and expected errors
+- **Boundary Test Data:** Data at minimum, maximum, and just beyond limits
+- **Data Combination Strategies:** Pairwise testing, combinatorial testing, synthetic data generation
 - **Test Data Versioning:** Approach for managing test data versions across environments
 - **Data Relationship Testing:** Referential integrity, foreign keys, data consistency
-- **PII Considerations:** [Note any sensitive data handling requirements]
-- **Data Cleanup:** [Instructions for test data lifecycle management]
+- **PII Considerations:** Note any sensitive data handling requirements
+- **Data Cleanup:** Instructions for test data lifecycle management
 
 ### Preconditions
-List all environmental and setup requirements:
-- Application deployment status (specify environment: dev/test/staging/production)
+List:
+- Application deployment status (dev/test/staging/production)
 - Database state and test data
 - User account requirements
 - Configuration settings (including feature flags)
@@ -190,7 +74,7 @@ List all environmental and setup requirements:
 - Security tools setup (if security testing)
 
 ### Postconditions
-Document expected state after test execution:
+Document:
 - Database changes
 - Session state
 - Log entries
@@ -210,27 +94,17 @@ Specify:
 - Parallel execution considerations
 
 ### Environment-Specific Testing
-Differentiate test requirements across environments:
-- **Dev Environment:** Rapid iteration, relaxed performance requirements, mock services
-- **Test Environment:** Comprehensive testing, realistic data, performance baselines
-- **Staging Environment:** Production-like configuration, full integration testing, security validation
-- **Production Environment:** Smoke tests, monitoring validation, minimal disruption testing
-
-## Automation Guidance
-
-### Automation Prioritization Framework
-Evaluate automation candidates based on:
-- **ROI:** High frequency tests, regression risk, time savings
-- **Frequency:** How often the test will be executed (daily, weekly, per release)
-- **Complexity:** Implementation difficulty and maintenance effort
-- **Stability:** Likelihood of false positives/negatives
-- **Execution Time:** Impact on CI/CD pipeline duration
+Differentiate across environments:
+- **Dev:** Rapid iteration, relaxed performance, mock services
+- **Test:** Comprehensive testing, realistic data, performance baselines
+- **Staging:** Production-like configuration, full integration, security validation
+- **Production:** Smoke tests, monitoring validation, minimal disruption
 
 ### Automation Recommendations
 For each automation candidate, provide:
 - Test ID and title
 - Priority level (High, Medium, Low)
-- Recommended automation tool/framework:
+- Recommended tool/framework:
   - UI: Cypress, Playwright, Selenium, Puppeteer
   - API: Postman, REST Assured, Karate
   - Performance: k6, JMeter, Gatling
@@ -250,174 +124,109 @@ Identify tests that should remain manual:
 - Accessibility expert review
 - Security penetration testing (manual verification)
 
-## Shift-Left Testing Integration
-
-### Developer Testing Guidance
+### Shift-Left Testing
+Include:
 - Unit test integration scenarios
 - Test-driven development (TDD) approach
 - Code review testing checklist
 - Local development testing requirements
 - Test-first development scenarios
-
-### Continuous Testing
-- Testing in CI/CD beyond execution
 - Branch-based testing strategies
 - Pull request testing requirements
 - Progressive delivery testing
 - Feature flag testing in production
 
-## Test Maintenance Strategy
-
-### Maintenance Guidelines
-- Define test case maintenance frequency (quarterly review, per release)
+### Test Maintenance Strategy
+Define:
+- Test case maintenance frequency (quarterly review, per release)
 - Test obsolescence detection criteria
 - Test deprecation process and criteria
-- Test case versioning approach (semantic versioning for tests)
+- Test case versioning approach (semantic versioning)
 - Test debt management strategy (identify, prioritize, reduce)
 - Test refactoring guidelines
-
-### Regression Testing Strategy
 - Explicit regression test suite definition
 - Smoke test criteria and execution frequency
 - Regression test selection strategy based on code changes (impact analysis)
 - Automated regression execution schedule (nightly, per release)
 - Regression test suite size management
 
-## Quality Metrics and KPIs
-
-### Quality Metrics Definition
+### Quality Metrics and KPIs
+Define:
 - **Defect Density:** Defects per thousand lines of code or per requirement
 - **Defect Escape Rate:** Percentage of defects found in production vs. pre-production
 - **Test Effectiveness:** Defect detection rate (defects found by tests / total defects)
 - **Test Pass Rate:** Percentage of tests passing over time
-- **Test Coverage Quality:** Branch, path, and condition coverage targets (e.g., 80% branch, 70% path)
+- **Test Coverage Quality:** Branch, path, and condition coverage targets (80% branch, 70% path)
 - **ROI Metrics:** Testing effort vs. defect prevention cost savings
 - **Execution Time Trends:** Test suite execution time over time
 - **Flaky Test Rate:** Percentage of tests with intermittent failures
-
-### Trend Analysis
 - Test result trends over time
 - Defect trend analysis (by severity, by feature, over time)
 - Performance regression trends
 - Test execution history and comparison
 
-## Risk Analysis
-
-### Risk Identification
-For each identified risk, provide:
-- **Risk ID:** [Unique identifier for tracking]
-- **Risk Description:** [Specific risk]
-- **Affected Test Cases:** [List of related test IDs]
+### Risk Analysis
+For each risk, provide:
+- **Risk ID:** Unique identifier for tracking
+- **Risk Description:** Specific risk
+- **Affected Test Cases:** List of related test IDs
 - **Likelihood:** High, Medium, Low
 - **Impact:** Critical, High, Medium, Low
-- **Mitigation Strategy:** [How to prevent or minimize the risk]
-- **Contingency Plan:** [What to do if risk occurs]
-- **Risk Owner:** [Who is responsible for managing this risk]
+- **Mitigation Strategy:** How to prevent or minimize the risk
+- **Contingency Plan:** What to do if risk occurs
+- **Risk Owner:** Who is responsible for managing this risk
 
-### Risk Categories
-- Security risks (authentication, authorization, data protection)
-- Performance risks (latency, throughput, resource utilization)
-- Usability risks (user experience, accessibility)
-- Integration risks (third-party dependencies, service communication)
-- Compliance risks (regulatory requirements, audit trails)
-- Third-party dependency risks (SLA breaches, service outages)
-- Operational risks (deployment failures, configuration errors)
+Risk categories: Security, Performance, Usability, Integration, Compliance, Third-party dependency, Operational
 
-## Assumptions
-
-### Assumption Documentation
+### Assumptions
 For each assumption, provide:
-- **Assumption ID:** [Unique identifier for tracking]
-- **Assumption Description:** [What is being assumed]
-- **Validation Method:** [How to validate this assumption]
-- **Validation Frequency:** [How often to re-validate]
-- **Impact if Invalid:** [Consequences if assumption is wrong]
-- **Mitigation Plan:** [What to do if assumption proves invalid]
+- **Assumption ID:** Unique identifier for tracking
+- **Assumption Description:** What is being assumed
+- **Validation Method:** How to validate this assumption
+- **Validation Frequency:** How often to re-validate
+- **Impact if Invalid:** Consequences if assumption is wrong
+- **Mitigation Plan:** What to do if assumption proves invalid
 
-### Assumption Categories
-- Technical assumptions (technology capabilities, infrastructure)
-- User behavior assumptions (user actions, skill levels)
-- Infrastructure assumptions (capacity, availability, performance)
-- Business assumptions (requirements, priorities, constraints)
-- Testing environment assumptions (configuration, data, tools)
+Assumption categories: Technical, User behavior, Infrastructure, Business, Testing environment
 
-## Reporting and Documentation
-
-### Test Execution Documentation
+### Reporting and Documentation
 Specify:
 - Pass/fail criteria for each test
-- Defect reporting format and template (include severity, priority, environment, steps, expected vs. actual)
+- Defect reporting format (severity, priority, environment, steps, expected vs. actual)
 - Test result logging requirements (timestamp, test ID, result, execution time, environment)
-- Coverage metrics (functional coverage, code coverage, requirement coverage, risk coverage)
+- Coverage metrics (functional, code, requirement, risk coverage)
 - Test execution history and trend analysis
 - Executive dashboard metrics
-
-### Traceability Matrix
-Map test cases to:
-- Acceptance criteria
-- Business requirements
-- Risk items
-- Compliance requirements
-- Security requirements
-- Performance requirements
-
-### Reporting Enhancements
+- Traceability matrix mapping test cases to acceptance criteria, business requirements, risk items, compliance requirements, security requirements, performance requirements
 - Trend analysis for test results over time
 - Defect trend analysis (by severity, by feature, by environment)
-- Test execution history and comparison
 - Executive summary dashboard
 - ROI analysis for testing efforts
 
-## Security Testing Specifics
+### Security Testing Specifics
+Include:
+- **Tool Recommendations:** OWASP ZAP (DAST), Burp Suite (web security), SonarQube (SAST), OWASP Dependency-Check (dependency scanning), Snyk (container security)
+- **Test Scenarios:** Authentication bypass (session fixation, token theft, cookie manipulation, JWT manipulation), authorization testing (horizontal/vertical privilege escalation), security header validation (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security), input validation (SQL injection, XSS, command injection, LDAP injection), session management (timeout, fixation, hijacking), data encryption (at rest, in transit), API security (rate limiting, auth, input validation), penetration testing scenarios
 
-### Security Tool Recommendations
-- **OWASP ZAP:** Dynamic application security testing
-- **Burp Suite:** Web application security testing
-- **SonarQube:** Static code analysis for security vulnerabilities
-- **OWASP Dependency-Check:** Dependency vulnerability scanning
-- **Snyk:** Container and dependency security
+### Performance Testing Specifics
+Include:
+- **Metrics:** Response time (p50 < 500ms, p95 < 1s, p99 < 2s), throughput (requests per second), error rate (< 1% normal, < 5% peak), resource utilization (CPU < 70%, Memory < 80%, Disk I/O within limits), concurrent users (100, 500, 1000), performance regression (> 10% degradation alert)
+- **Profiling:** Bottleneck identification (database, network, application code), resource utilization limits, memory leak detection, database query performance analysis, network latency analysis
 
-### Security Test Scenarios
-- Authentication bypass (session fixation, token theft, cookie manipulation, JWT manipulation)
-- Authorization testing (horizontal privilege escalation, vertical privilege escalation)
-- Security header validation (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security)
-- Input validation (SQL injection, XSS, command injection, LDAP injection)
-- Session management (session timeout, session fixation, session hijacking)
-- Data encryption (data at rest, data in transit)
-- API security (rate limiting, authentication, authorization, input validation)
-- Penetration testing scenarios
-
-## Performance Testing Specifics
-
-### Performance Metrics
-- **Response Time:** p50 < 500ms, p95 < 1s, p99 < 2s
-- **Throughput:** Requests per second (target and baseline)
-- **Error Rate:** < 1% under normal load, < 5% under peak load
-- **Resource Utilization:** CPU < 70%, Memory < 80%, Disk I/O within limits
-- **Concurrent Users:** Target capacity (e.g., 100, 500, 1000 concurrent users)
-- **Performance Regression:** Alert if > 10% degradation from baseline
-
-### Performance Profiling
-- Bottleneck identification (database, network, application code)
-- Resource utilization limits
-- Memory leak detection
-- Database query performance analysis
-- Network latency analysis
-
-## Output Structure
-Organize your response in this order:
+### Output Structure
+Organize response in this order:
 1. Executive Summary (test statistics, coverage overview, quality metrics)
-2. Context Information
+2. Context Information (application type, tech stack, user personas, business criticality, compliance requirements, deployment environments, feature flags)
 3. Test Cases (by category, with granularity guidelines applied)
 4. Test Details (data, preconditions, postconditions, dependencies, environment-specific)
 5. Automation Recommendations (with tool-specific guidance)
 6. Shift-Left Testing Integration
 7. Test Maintenance Strategy
 8. Quality Metrics and KPIs
-9. Risk Analysis (with enhanced security and performance risks)
+9. Risk Analysis
 10. Assumptions
-11. Reporting Guidelines (with trend analysis and enhancements)
+11. Reporting Guidelines
 12. Security Testing Specifics
 13. Performance Testing Specifics
 
-Please format your response clearly using markdown, provide specific and actionable test cases, ensure all requested information is complete, and follow the granularity guidelines to create focused, independent test cases.
+Format response clearly using markdown. Provide specific and actionable test cases. Ensure all requested information is complete.
